@@ -31,7 +31,9 @@ String serverTime = LocalDateTime.now().toString();
         color: #1f2937;
     }
 
-    /* ================= HEADER ================= */
+    /* =====================================================
+       HEADER
+    ====================================================== */
 
     header {
         background: #111827;
@@ -54,7 +56,9 @@ String serverTime = LocalDateTime.now().toString();
         font-weight: bold;
     }
 
-    /* ================= HERO ================= */
+    /* =====================================================
+       HERO
+    ====================================================== */
 
     .hero {
         padding: 60px 8%;
@@ -94,7 +98,9 @@ String serverTime = LocalDateTime.now().toString();
         font-weight: bold;
     }
 
-    /* ================= MAIN CONTAINER ================= */
+    /* =====================================================
+       MAIN CONTAINER
+    ====================================================== */
 
     .container {
         width: 84%;
@@ -106,7 +112,15 @@ String serverTime = LocalDateTime.now().toString();
         font-size: 25px;
     }
 
-    /* ================= PIPELINE ================= */
+    .section-description {
+        color: #6b7280;
+        margin-bottom: 25px;
+        line-height: 1.6;
+    }
+
+    /* =====================================================
+       PIPELINE STAGES
+    ====================================================== */
 
     .pipeline {
         display: grid;
@@ -155,71 +169,161 @@ String serverTime = LocalDateTime.now().toString();
         font-size: 14px;
     }
 
-    /* ================= CARDS ================= */
+    /* =====================================================
+       ARCHITECTURE SECTION
+    ====================================================== */
 
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+    .architecture-section {
+        margin-top: 60px;
+    }
+
+    .architecture {
+        background: #111827;
+        border-radius: 15px;
+        padding: 40px 30px;
+        color: white;
+        overflow-x: auto;
+    }
+
+    .architecture-flow {
+        min-width: 900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .architecture-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         gap: 20px;
-        margin-top: 30px;
+        width: 100%;
     }
 
-    .card {
+    .architecture-node {
+        width: 190px;
+        min-height: 115px;
+
         background: white;
-        padding: 25px;
-        border-radius: 10px;
+        color: #1f2937;
 
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
+
+        padding: 20px;
+
+        text-align: center;
+
+        cursor: pointer;
+
+        border: 3px solid transparent;
+
+        box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+
+        transition: all 0.25s ease;
     }
 
-    .card h3 {
-        margin-bottom: 12px;
+    .architecture-node:hover {
+        transform: translateY(-5px);
+        border-color: #60a5fa;
+    }
+
+    .architecture-node h3 {
+        margin-bottom: 8px;
         color: #2563eb;
     }
 
-    .card p {
-        line-height: 1.6;
-        color: #4b5563;
+    .architecture-node p {
+        font-size: 13px;
+        color: #6b7280;
+        line-height: 1.5;
     }
 
-    /* ================= DEPLOYMENT ================= */
+    .architecture-node .node-status {
+        margin-top: 8px;
+        color: #16a34a;
+        font-size: 12px;
+        font-weight: bold;
+    }
 
-    .deployment {
+    .arrow {
+        font-size: 28px;
+        color: #60a5fa;
+        font-weight: bold;
+    }
+
+    .vertical-arrow {
+        font-size: 30px;
+        color: #60a5fa;
+        height: 45px;
+        display: flex;
+        align-items: center;
+    }
+
+    .server-group {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+    }
+
+    /* =====================================================
+       ARCHITECTURE INFORMATION PANEL
+    ====================================================== */
+
+    .architecture-info {
         margin-top: 30px;
 
-        background: white;
-        padding: 25px;
+        background: #1f2937;
+
+        border: 1px solid #374151;
 
         border-radius: 10px;
 
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        padding: 25px;
+
+        display: none;
     }
 
-    .deployment table {
-        width: 100%;
-        border-collapse: collapse;
+    .architecture-info.active {
+        display: block;
     }
 
-    .deployment th,
-    .deployment td {
-        padding: 12px;
-
-        border-bottom: 1px solid #e5e7eb;
-
-        text-align: left;
+    .architecture-info h3 {
+        color: #60a5fa;
+        margin-bottom: 15px;
     }
 
-    .deployment th {
-        background: #f9fafb;
-        width: 35%;
+    .architecture-info ul {
+        list-style: none;
     }
 
-    /* ================= SERVER INFO ================= */
+    .architecture-info li {
+        padding: 7px 0;
+        color: #d1d5db;
+    }
+
+    .architecture-info li::before {
+        content: "✓";
+        color: #22c55e;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .architecture-hint {
+        text-align: center;
+        color: #9ca3af;
+        margin-top: 20px;
+        font-size: 13px;
+    }
+
+    /* =====================================================
+       SERVER INFORMATION
+    ====================================================== */
 
     .server-info {
         margin-top: 30px;
 
         display: grid;
+
         grid-template-columns: repeat(3, 1fr);
 
         gap: 20px;
@@ -250,7 +354,78 @@ String serverTime = LocalDateTime.now().toString();
         word-break: break-word;
     }
 
-    /* ================= FOOTER ================= */
+    /* =====================================================
+       CARDS
+    ====================================================== */
+
+    .cards {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 20px;
+
+        margin-top: 30px;
+    }
+
+    .card {
+        background: white;
+
+        padding: 25px;
+
+        border-radius: 10px;
+
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .card h3 {
+        margin-bottom: 12px;
+        color: #2563eb;
+    }
+
+    .card p {
+        line-height: 1.6;
+        color: #4b5563;
+    }
+
+    /* =====================================================
+       DEPLOYMENT INFORMATION
+    ====================================================== */
+
+    .deployment {
+        margin-top: 30px;
+
+        background: white;
+
+        padding: 25px;
+
+        border-radius: 10px;
+
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .deployment table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .deployment th,
+    .deployment td {
+        padding: 12px;
+
+        border-bottom: 1px solid #e5e7eb;
+
+        text-align: left;
+    }
+
+    .deployment th {
+        background: #f9fafb;
+        width: 35%;
+    }
+
+    /* =====================================================
+       FOOTER
+    ====================================================== */
 
     footer {
         margin-top: 50px;
@@ -264,7 +439,9 @@ String serverTime = LocalDateTime.now().toString();
         padding: 25px;
     }
 
-    /* ================= RESPONSIVE ================= */
+    /* =====================================================
+       RESPONSIVE
+    ====================================================== */
 
     @media (max-width: 1000px) {
 
@@ -279,7 +456,6 @@ String serverTime = LocalDateTime.now().toString();
         .server-info {
             grid-template-columns: 1fr;
         }
-
     }
 
     @media (max-width: 600px) {
@@ -299,7 +475,6 @@ String serverTime = LocalDateTime.now().toString();
         header {
             padding: 20px 5%;
         }
-
     }
 
 </style>
@@ -309,7 +484,9 @@ String serverTime = LocalDateTime.now().toString();
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- =====================================================
+     HEADER
+====================================================== -->
 
 <header>
 
@@ -323,7 +500,9 @@ String serverTime = LocalDateTime.now().toString();
 
 </header>
 
-<!-- ================= HERO ================= -->
+<!-- =====================================================
+     HERO
+====================================================== -->
 
 <section class="hero">
 
@@ -345,415 +524,670 @@ String serverTime = LocalDateTime.now().toString();
 
 </section>
 
-<!-- ================= MAIN ================= -->
-
 <div class="container">
 
-```
-<!-- PIPELINE -->
+<!-- =====================================================
+     PIPELINE STAGES
+====================================================== -->
 
 <h2 class="section-title">
     Pipeline Stages
 </h2>
 
+<p class="section-description">
+    The application moves through source control, continuous integration,
+    testing, deployment and AWS infrastructure before becoming available
+    to end users.
+</p>
 
 <div class="pipeline">
 
+```
+<div class="stage">
 
-    <!-- GitHub -->
-
-    <div class="stage">
-
-        <div class="stage-icon">
-            1
-        </div>
-
-        <h3>GitHub</h3>
-
-        <p>
-            Source Code
-        </p>
-
-        <div class="success">
-            &#10003; SUCCESS
-        </div>
-
+    <div class="stage-icon">
+        1
     </div>
 
+    <h3>GitHub</h3>
 
-    <!-- Jenkins -->
+    <p>
+        Source Code
+    </p>
 
-    <div class="stage">
-
-        <div class="stage-icon">
-            2
-        </div>
-
-        <h3>Jenkins</h3>
-
-        <p>
-            CI Pipeline
-        </p>
-
-        <div class="success">
-            &#10003; SUCCESS
-        </div>
-
+    <div class="success">
+        &#10003; SUCCESS
     </div>
-
-
-    <!-- Maven -->
-
-    <div class="stage">
-
-        <div class="stage-icon">
-            3
-        </div>
-
-        <h3>Maven</h3>
-
-        <p>
-            Build &amp; Test
-        </p>
-
-        <div class="success">
-            &#10003; SUCCESS
-        </div>
-
-    </div>
-
-
-    <!-- Ansible -->
-
-    <div class="stage">
-
-        <div class="stage-icon">
-            4
-        </div>
-
-        <h3>Ansible</h3>
-
-        <p>
-            Deployment
-        </p>
-
-        <div class="success">
-            &#10003; SUCCESS
-        </div>
-
-    </div>
-
-
-    <!-- AWS -->
-
-    <div class="stage">
-
-        <div class="stage-icon">
-            5
-        </div>
-
-        <h3>AWS</h3>
-
-        <p>
-            Production
-        </p>
-
-        <div class="success">
-            &#10003; RUNNING
-        </div>
-
-    </div>
-
 
 </div>
 
 
-<!-- ================= SERVER INFORMATION ================= -->
+<div class="stage">
 
-<div class="server-info">
-
-
-    <div class="info-box">
-
-        <h3>Application</h3>
-
-        <p>
-            DevOps Demo
-        </p>
-
+    <div class="stage-icon">
+        2
     </div>
 
+    <h3>Jenkins</h3>
 
-    <div class="info-box">
+    <p>
+        CI Pipeline
+    </p>
 
-        <h3>Environment</h3>
-
-        <p>
-            Production
-        </p>
-
+    <div class="success">
+        &#10003; SUCCESS
     </div>
-
-
-    <div class="info-box">
-
-        <h3>Application Server</h3>
-
-        <p>
-            Apache Tomcat
-        </p>
-
-    </div>
-
 
 </div>
 
 
-<!-- ================= TECHNOLOGY CARDS ================= -->
+<div class="stage">
 
-<div class="cards">
-
-
-    <div class="card">
-
-        <h3>
-            Continuous Integration
-        </h3>
-
-        <p>
-            Developer pushes code to GitHub.
-            Jenkins detects the change and starts the pipeline.
-            Maven compiles the application and executes automated tests.
-        </p>
-
+    <div class="stage-icon">
+        3
     </div>
 
+    <h3>Maven</h3>
 
-    <div class="card">
+    <p>
+        Build &amp; Test
+    </p>
 
-        <h3>
-            Continuous Deployment
-        </h3>
-
-        <p>
-            After successful testing, Jenkins triggers deployment.
-            Ansible connects to the target EC2 servers and deploys
-            the latest application version.
-        </p>
-
+    <div class="success">
+        &#10003; SUCCESS
     </div>
-
-
-    <div class="card">
-
-        <h3>
-            Load Balancing
-        </h3>
-
-        <p>
-            Application traffic is distributed across multiple
-            EC2 instances using an AWS Application Load Balancer.
-        </p>
-
-    </div>
-
 
 </div>
 
 
-<!-- ================= DEPLOYMENT INFORMATION ================= -->
+<div class="stage">
 
-<div class="deployment">
+    <div class="stage-icon">
+        4
+    </div>
 
-    <h2 class="section-title">
-        Deployment Information
-    </h2>
+    <h3>Ansible</h3>
 
+    <p>
+        Deployment
+    </p>
 
-    <table>
-
-
-        <tr>
-
-            <th>
-                Application
-            </th>
-
-            <td>
-                DevOps Pipeline Demo
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                Environment
-            </th>
-
-            <td>
-                Production
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                Build Tool
-            </th>
-
-            <td>
-                Maven
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                CI/CD
-            </th>
-
-            <td>
-                Jenkins
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                Configuration Management
-            </th>
-
-            <td>
-                Ansible
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                Containerization
-            </th>
-
-            <td>
-                Docker
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                Cloud Platform
-            </th>
-
-            <td>
-                AWS EC2 + ALB
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                Deployment Status
-            </th>
-
-            <td class="success">
-                &#10003; SUCCESSFUL
-            </td>
-
-        </tr>
-
-
-    </table>
+    <div class="success">
+        &#10003; SUCCESS
+    </div>
 
 </div>
 
 
-<!-- ================= RUNTIME INFORMATION ================= -->
+<div class="stage">
 
-<div class="deployment">
+    <div class="stage-icon">
+        5
+    </div>
 
-    <h2 class="section-title">
-        Runtime Information
-    </h2>
+    <h3>AWS</h3>
 
+    <p>
+        Production
+    </p>
 
-    <table>
-
-
-        <tr>
-
-            <th>
-                Server Time
-            </th>
-
-            <td>
-                <%= serverTime %>
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                Server
-            </th>
-
-            <td>
-                Apache Tomcat
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                Application Type
-            </th>
-
-            <td>
-                Java / JSP
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <th>
-                Deployment
-            </th>
-
-            <td class="success">
-                &#10003; ACTIVE
-            </td>
-
-        </tr>
-
-
-    </table>
+    <div class="success">
+        &#10003; RUNNING
+    </div>
 
 </div>
 ```
 
 </div>
 
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     SYSTEM ARCHITECTURE
+====================================================== -->
+
+<div class="architecture-section">
+
+```
+<h2 class="section-title">
+    System Architecture
+</h2>
+
+<p class="section-description">
+    End-to-end architecture showing how source code moves through the
+    CI/CD pipeline and reaches the application servers through the
+    AWS Application Load Balancer.
+</p>
+
+
+<div class="architecture">
+
+
+    <div class="architecture-flow">
+
+
+        <!-- GITHUB -->
+
+        <div class="architecture-row">
+
+            <div class="architecture-node"
+                 onclick="showArchitecture('github')">
+
+                <h3>GitHub</h3>
+
+                <p>
+                    Source Repository
+                </p>
+
+                <div class="node-status">
+                    &#10003; SOURCE
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="vertical-arrow">
+            &#8595;
+        </div>
+
+
+        <!-- JENKINS -->
+
+        <div class="architecture-row">
+
+            <div class="architecture-node"
+                 onclick="showArchitecture('jenkins')">
+
+                <h3>Jenkins EC2</h3>
+
+                <p>
+                    CI Server
+                </p>
+
+                <div class="node-status">
+                    &#10003; BUILD SERVER
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="vertical-arrow">
+            &#8595;
+        </div>
+
+
+        <!-- MAVEN + TEST -->
+
+        <div class="architecture-row">
+
+            <div class="architecture-node"
+                 onclick="showArchitecture('maven')">
+
+                <h3>Maven</h3>
+
+                <p>
+                    Build &amp; Automated Tests
+                </p>
+
+                <div class="node-status">
+                    &#10003; TEST PASSED
+                </div>
+
+            </div>
+
+
+            <div class="arrow">
+                &#8594;
+            </div>
+
+
+            <div class="architecture-node"
+                 onclick="showArchitecture('war')">
+
+                <h3>webapp.war</h3>
+
+                <p>
+                    Application Artifact
+                </p>
+
+                <div class="node-status">
+                    &#10003; READY
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="vertical-arrow">
+            &#8595;
+        </div>
+
+
+        <!-- ANSIBLE -->
+
+        <div class="architecture-row">
+
+            <div class="architecture-node"
+                 onclick="showArchitecture('ansible')">
+
+                <h3>Ansible</h3>
+
+                <p>
+                    Deployment Automation
+                </p>
+
+                <div class="node-status">
+                    &#10003; DEPLOYMENT
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="vertical-arrow">
+            &#8595;
+        </div>
+
+
+        <!-- ALB -->
+
+        <div class="architecture-row">
+
+            <div class="architecture-node"
+                 onclick="showArchitecture('alb')">
+
+                <h3>AWS ALB</h3>
+
+                <p>
+                    Application Load Balancer
+                </p>
+
+                <div class="node-status">
+                    &#10003; TRAFFIC ROUTING
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="vertical-arrow">
+            &#8595;
+        </div>
+
+
+        <!-- EC2 SERVERS -->
+
+        <div class="server-group">
+
+
+            <div class="architecture-node"
+                 onclick="showArchitecture('ec2a')">
+
+                <h3>EC2 Server #1</h3>
+
+                <p>
+                    Apache Tomcat<br>
+                    webapp.war
+                </p>
+
+                <div class="node-status">
+                    &#10003; HEALTHY
+                </div>
+
+            </div>
+
+
+            <div class="architecture-node"
+                 onclick="showArchitecture('ec2b')">
+
+                <h3>EC2 Server #2</h3>
+
+                <p>
+                    Apache Tomcat<br>
+                    webapp.war
+                </p>
+
+                <div class="node-status">
+                    &#10003; HEALTHY
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- INFORMATION PANEL -->
+
+        <div id="architectureInfo"
+             class="architecture-info">
+
+            <h3 id="architectureTitle">
+                Architecture Component
+            </h3>
+
+            <ul id="architectureDetails">
+            </ul>
+
+        </div>
+
+
+        <div class="architecture-hint">
+
+            Click any architecture component to view details.
+
+        </div>
+
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- =====================================================
+     SERVER INFORMATION
+====================================================== -->
+
+<div class="server-info">
+
+```
+<div class="info-box">
+
+    <h3>Application</h3>
+
+    <p>
+        DevOps Demo
+    </p>
+
+</div>
+
+
+<div class="info-box">
+
+    <h3>Environment</h3>
+
+    <p>
+        Production
+    </p>
+
+</div>
+
+
+<div class="info-box">
+
+    <h3>Application Server</h3>
+
+    <p>
+        Apache Tomcat
+    </p>
+
+</div>
+```
+
+</div>
+
+<!-- =====================================================
+     TECHNOLOGY CARDS
+====================================================== -->
+
+<div class="cards">
+
+```
+<div class="card">
+
+    <h3>
+        Continuous Integration
+    </h3>
+
+    <p>
+        Developer pushes code to GitHub.
+        Jenkins detects the change and starts the pipeline.
+        Maven compiles the application and executes automated tests.
+    </p>
+
+</div>
+
+
+<div class="card">
+
+    <h3>
+        Continuous Deployment
+    </h3>
+
+    <p>
+        After successful testing, Jenkins triggers deployment.
+        Ansible connects to the target EC2 servers and deploys
+        the latest application version.
+    </p>
+
+</div>
+
+
+<div class="card">
+
+    <h3>
+        Load Balancing
+    </h3>
+
+    <p>
+        Application traffic is distributed across multiple
+        EC2 instances using an AWS Application Load Balancer.
+    </p>
+
+</div>
+```
+
+</div>
+
+<!-- =====================================================
+     DEPLOYMENT INFORMATION
+====================================================== -->
+
+<div class="deployment">
+
+```
+<h2 class="section-title">
+    Deployment Information
+</h2>
+
+
+<table>
+
+
+    <tr>
+
+        <th>
+            Application
+        </th>
+
+        <td>
+            DevOps Pipeline Demo
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <th>
+            Environment
+        </th>
+
+        <td>
+            Production
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <th>
+            Build Tool
+        </th>
+
+        <td>
+            Maven
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <th>
+            CI/CD
+        </th>
+
+        <td>
+            Jenkins
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <th>
+            Configuration Management
+        </th>
+
+        <td>
+            Ansible
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <th>
+            Containerization
+        </th>
+
+        <td>
+            Docker
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <th>
+            Cloud Platform
+        </th>
+
+        <td>
+            AWS EC2 + ALB
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <th>
+            Deployment Status
+        </th>
+
+        <td class="success">
+            &#10003; SUCCESSFUL
+        </td>
+
+    </tr>
+
+
+</table>
+```
+
+</div>
+
+<!-- =====================================================
+     RUNTIME INFORMATION
+====================================================== -->
+
+<div class="deployment">
+
+```
+<h2 class="section-title">
+    Runtime Information
+</h2>
+
+
+<table>
+
+
+    <tr>
+
+        <th>
+            Server Time
+        </th>
+
+        <td>
+            <%= serverTime %>
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <th>
+            Server
+        </th>
+
+        <td>
+            Apache Tomcat
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <th>
+            Application Type
+        </th>
+
+        <td>
+            Java / JSP
+        </td>
+
+    </tr>
+
+
+    <tr>
+
+        <th>
+            Deployment
+        </th>
+
+        <td class="success">
+            &#10003; ACTIVE
+        </td>
+
+    </tr>
+
+
+</table>
+```
+
+</div>
+
+</div>
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
 
 <footer>
 
@@ -767,9 +1201,16 @@ CI/CD | Jenkins | Maven | Ansible | Docker | AWS | Tomcat | ALB
 
 </footer>
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
 
 <script>
+
+
+    /* =====================================================
+       HEALTH CHECK
+    ====================================================== */
 
     function checkHealth() {
 
@@ -782,6 +1223,230 @@ CI/CD | Jenkins | Maven | Ansible | Docker | AWS | Tomcat | ALB
         message.style.color = "#bbf7d0";
 
     }
+
+
+    /* =====================================================
+       ARCHITECTURE DETAILS
+    ====================================================== */
+
+    const architectureData = {
+
+        github: {
+
+            title: "GitHub - Source Repository",
+
+            details: [
+
+                "Application source code is maintained in GitHub",
+
+                "Developer pushes changes to the repository",
+
+                "GitHub webhook triggers Jenkins",
+
+                "Jenkins checks out the latest source code"
+
+            ]
+
+        },
+
+
+        jenkins: {
+
+            title: "Jenkins EC2 - CI Server",
+
+            details: [
+
+                "Jenkins is hosted on an EC2 instance",
+
+                "Receives GitHub webhook notifications",
+
+                "Checks out application source code",
+
+                "Starts the CI/CD pipeline",
+
+                "Runs Maven build and test stages",
+
+                "Triggers deployment after successful build"
+
+            ]
+
+        },
+
+
+        maven: {
+
+            title: "Maven - Build & Test",
+
+            details: [
+
+                "Compiles the Java application",
+
+                "Resolves project dependencies",
+
+                "Executes automated tests",
+
+                "Packages the application",
+
+                "Produces the webapp.war artifact"
+
+            ]
+
+        },
+
+
+        war: {
+
+            title: "webapp.war - Deployment Artifact",
+
+            details: [
+
+                "WAR file contains the Java web application",
+
+                "Contains JSP pages and application resources",
+
+                "Generated after successful Maven build",
+
+                "Transferred for deployment to application servers"
+
+            ]
+
+        },
+
+
+        ansible: {
+
+            title: "Ansible - Deployment Automation",
+
+            details: [
+
+                "Jenkins triggers deployment automation",
+
+                "Ansible connects to target EC2 servers",
+
+                "Deploys the latest webapp.war",
+
+                "Updates the Tomcat application",
+
+                "Provides repeatable deployment"
+
+            ]
+
+        },
+
+
+        alb: {
+
+            title: "AWS Application Load Balancer",
+
+            details: [
+
+                "Receives incoming application traffic",
+
+                "Uses a target group containing EC2 instances",
+
+                "Performs health checks",
+
+                "Routes traffic only to healthy targets",
+
+                "Distributes requests across application servers"
+
+            ]
+
+        },
+
+
+        ec2a: {
+
+            title: "EC2 Server #1 - Application Server",
+
+            details: [
+
+                "Runs Apache Tomcat",
+
+                "Hosts the webapp.war application",
+
+                "Serves index.jsp",
+
+                "Registered as an ALB target",
+
+                "Health status: Healthy"
+
+            ]
+
+        },
+
+
+        ec2b: {
+
+            title: "EC2 Server #2 - Application Server",
+
+            details: [
+
+                "Runs Apache Tomcat",
+
+                "Hosts the webapp.war application",
+
+                "Serves index.jsp",
+
+                "Registered as an ALB target",
+
+                "Health status: Healthy"
+
+            ]
+
+        }
+
+    };
+
+
+    function showArchitecture(component) {
+
+        const info =
+            architectureData[component];
+
+        const panel =
+            document.getElementById("architectureInfo");
+
+        const title =
+            document.getElementById("architectureTitle");
+
+        const details =
+            document.getElementById("architectureDetails");
+
+
+        title.innerText =
+            info.title;
+
+
+        details.innerHTML = "";
+
+
+        info.details.forEach(function(detail) {
+
+            const li =
+                document.createElement("li");
+
+            li.innerText =
+                detail;
+
+            details.appendChild(li);
+
+        });
+
+
+        panel.classList.add("active");
+
+
+        panel.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "nearest"
+
+        });
+
+    }
+
 
 </script>
 
