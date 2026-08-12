@@ -1,19 +1,10 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.time.LocalDateTime" %>
-
-<%
-    String serverTime = LocalDateTime.now().toString();
-%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>DevOps CI/CD Pipeline</title>
 
@@ -25,1660 +16,641 @@
             padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: #f4f7fb;
-            color: #172033;
-            line-height: 1.5;
+            color: #1f2937;
         }
-
-        /* =========================
-           HEADER
-           ========================= */
 
         header {
-            height: 64px;
-            background: #071426;
+            background: #111827;
             color: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 5%;
-
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+            padding: 25px 50px;
+            text-align: center;
         }
 
-        .logo {
-            font-size: 21px;
-            font-weight: 700;
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
         }
 
-        nav {
-            display: flex;
-            gap: 28px;
+        header p {
+            color: #cbd5e1;
+            font-size: 16px;
         }
-
-        nav a {
-            color: #dbe5f5;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        nav a:hover {
-            color: #38bdf8;
-        }
-
-        /* =========================
-           HERO
-           ========================= */
-
-        .hero {
-            min-height: 280px;
-
-            padding: 45px 7%;
-
-            color: white;
-
-            background:
-                radial-gradient(
-                    circle at 85% 30%,
-                    rgba(56, 189, 248, 0.2),
-                    transparent 30%
-                ),
-                linear-gradient(
-                    135deg,
-                    #1456d9,
-                    #4338ca
-                );
-
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-content {
-            max-width: 900px;
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            line-height: 1.15;
-            margin-bottom: 14px;
-        }
-
-        .hero p {
-            font-size: 17px;
-            color: #e7efff;
-            max-width: 820px;
-        }
-
-        .health-button {
-            margin-top: 20px;
-
-            border: 0;
-            border-radius: 6px;
-
-            padding: 12px 20px;
-
-            background: #16c784;
-            color: white;
-
-            font-size: 14px;
-            font-weight: 700;
-
-            cursor: pointer;
-        }
-
-        .health-button:hover {
-            background: #11a96e;
-        }
-
-        #healthMessage {
-            min-height: 23px;
-            margin-top: 12px;
-
-            color: #b9ffda;
-
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        /* =========================
-           MAIN
-           ========================= */
 
         .container {
             width: 92%;
-            max-width: 1450px;
-
-            margin: auto;
-
-            padding: 36px 0;
-        }
-
-        .section {
-            margin-bottom: 36px;
+            max-width: 1250px;
+            margin: 30px auto;
         }
 
         .section-title {
-            color: #172b4d;
-            font-size: 28px;
-            margin-bottom: 7px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 25px;
+            color: #111827;
         }
 
-        .section-description {
-            color: #607086;
-            font-size: 15px;
-            margin-bottom: 20px;
-        }
+        /* Architecture */
 
-        /* =========================
-           PIPELINE
-           ========================= */
+        .architecture {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
 
         .pipeline {
-            width: 100%;
-
-            display: flex;
-            flex-wrap: nowrap;
-
-            gap: 15px;
-        }
-
-        .stage {
-            flex: 1 1 0;
-            min-width: 0;
-
-            background: white;
-
-            border: 1px solid #e1e7ef;
-            border-radius: 10px;
-
-            padding: 22px 12px;
-
-            text-align: center;
-
-            box-shadow:
-                0 4px 12px rgba(30, 50, 80, 0.07);
-        }
-
-        .stage-number {
-            width: 48px;
-            height: 48px;
-
-            margin: 0 auto 12px;
-
-            border-radius: 50%;
-
-            background: #2864e8;
-            color: white;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
-            font-size: 18px;
-            font-weight: 700;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .stage h3 {
-            font-size: 17px;
-            margin-bottom: 4px;
-        }
-
-        .stage p {
-            color: #69768a;
-            font-size: 13px;
-            margin-bottom: 8px;
-        }
-
-        .success {
-            color: #119447;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        /* =========================
-           ARCHITECTURE CARD
-           ========================= */
-
-        .architecture-card {
-            background: white;
-
-            border: 1px solid #dfe5ed;
-            border-radius: 12px;
-
-            padding: 25px;
-
-            box-shadow:
-                0 4px 14px rgba(30, 50, 80, 0.06);
-
-            overflow-x: auto;
-
-            margin-bottom: 25px;
-        }
-
-        .architecture-title {
-            color: #172b4d;
-            font-size: 23px;
-            margin-bottom: 4px;
-        }
-
-        .architecture-subtitle {
-            color: #69768a;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
-
-        /* =========================
-           ARCHITECTURE NODES
-           ========================= */
-
-        .arch-node {
-            min-height: 125px;
-
-            border: 2px solid;
+        .box {
+            width: 190px;
+            min-height: 120px;
+            border: 2px solid #2563eb;
             border-radius: 10px;
-
-            padding: 15px;
-
+            background: #eff6ff;
+            padding: 20px 12px;
             text-align: center;
-
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
         }
 
-        .arch-node h3 {
-            font-size: 16px;
-            margin-bottom: 5px;
+        .box h3 {
+            color: #1d4ed8;
+            margin-bottom: 10px;
+            font-size: 18px;
         }
 
-        .arch-node p {
-            color: #5f6d82;
-            font-size: 12px;
-        }
-
-        .arch-icon {
-            width: 42px;
-            height: 42px;
-
-            margin-bottom: 8px;
-
-            border-radius: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: white;
-
-            font-size: 11px;
-            font-weight: 700;
+        .box p {
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         .arrow {
-            text-align: center;
-            color: #34445c;
-
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .arrow-symbol {
-            font-size: 25px;
-            line-height: 25px;
-        }
-
-        /* =========================
-           DEPLOYMENT ARCHITECTURE
-           ========================= */
-
-        .deployment-flow {
-            min-width: 1180px;
-
-            display: grid;
-
-            grid-template-columns:
-                145px
-                55px
-                205px
-                55px
-                220px
-                75px
-                300px;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 8px;
-        }
-
-        .github-node {
-            background: #f3f5f8;
-            border-color: #9aa8bb;
-        }
-
-        .github-icon {
-            background: #111827;
-        }
-
-        .jenkins-node {
-            background: #fff8e8;
-            border-color: #e6bd55;
-        }
-
-        .jenkins-icon {
-            background: #f28c28;
-        }
-
-        .ansible-node {
-            background: #eefbf2;
-            border-color: #77c487;
-        }
-
-        .ansible-icon {
-            background: #111111;
-        }
-
-        .docker-icon {
-            background: #2496ed;
-        }
-
-        .deployment-targets {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .target-box {
-            background: #eef6ff;
-
-            border: 2px solid #7baff1;
-            border-radius: 9px;
-
-            padding: 12px;
-
-            display: grid;
-
-            grid-template-columns: 46px 1fr;
-
-            align-items: center;
-
-            gap: 10px;
-        }
-
-        .target-box .arch-icon {
-            width: 40px;
-            height: 40px;
-            margin: 0;
-        }
-
-        .target-title {
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .target-subtitle {
-            color: #607086;
-            font-size: 11px;
-        }
-
-        .container-box {
-            background: white;
-
-            border: 1px dashed #aab7c8;
-            border-radius: 6px;
-
-            padding: 7px 8px;
-
-            margin-top: 7px;
-
-            text-align: center;
-        }
-
-        .container-box strong {
-            color: #334155;
-            font-size: 11px;
-        }
-
-        .container-box span {
+            font-size: 30px;
+            font-weight: bold;
             color: #64748b;
-            font-size: 10px;
         }
 
-        /* =========================
-           ACCESS ARCHITECTURE
-           ========================= */
+        /* Deployment */
+
+        .deployment {
+            margin-top: 35px;
+            border-top: 2px solid #e5e7eb;
+            padding-top: 30px;
+        }
+
+        .controller {
+            width: 260px;
+            margin: auto;
+            border: 2px solid #7c3aed;
+            background: #f5f3ff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .controller h3 {
+            color: #6d28d9;
+            margin-bottom: 10px;
+        }
+
+        .controller p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .down-arrow {
+            text-align: center;
+            font-size: 35px;
+            color: #64748b;
+            margin: 12px;
+        }
+
+        .servers {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .server {
+            width: 280px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #059669;
+            background: #ecfdf5;
+        }
+
+        .server h3 {
+            color: #047857;
+            margin-bottom: 12px;
+        }
+
+        .server p {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Application Access */
+
+        .access {
+            margin-top: 35px;
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
 
         .access-flow {
-            min-width: 1050px;
-
-            display: grid;
-
-            grid-template-columns:
-                180px
-                65px
-                220px
-                85px
-                1fr;
-
+            display: flex;
             align-items: center;
-
             justify-content: center;
-
-            gap: 10px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .user-node {
-            background: #f5efff;
-            border-color: #a88bd7;
-        }
-
-        .user-icon {
-            background: #7c3aed;
-        }
-
-        .alb-node {
-            background: #fff1f1;
-            border-color: #ef9b9b;
-        }
-
-        .alb-icon {
-            background: #232f3e;
-            color: #ffb300;
-        }
-
-        .access-targets {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .access-server {
-            background: #eef6ff;
-
-            border: 2px solid #7baff1;
-            border-radius: 9px;
-
-            padding: 13px 17px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-        .access-server strong {
-            display: block;
-            color: #24344d;
-            font-size: 14px;
-        }
-
-        .access-server span {
-            display: block;
-            color: #64748b;
-            font-size: 11px;
-        }
-
-        /* =========================
-           INFORMATION
-           ========================= */
-
-        .info-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
-
-            gap: 18px;
-
-            margin-top: 25px;
-        }
-
-        .info-card {
-            background: white;
-
-            border: 1px solid #e1e6ed;
+        .access-box {
+            width: 220px;
+            min-height: 110px;
             border-radius: 10px;
-
-            overflow: hidden;
-
-            box-shadow:
-                0 3px 10px rgba(30, 50, 80, 0.05);
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #ea580c;
+            background: #fff7ed;
         }
 
-        .info-card h3 {
-            background: #f8fafc;
-
-            color: #172b4d;
-
-            font-size: 17px;
-
-            padding: 14px 16px;
-
-            border-bottom: 1px solid #e4e9f0;
+        .access-box h3 {
+            color: #c2410c;
+            margin-bottom: 10px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .access-box p {
+            font-size: 14px;
+            line-height: 1.5;
         }
 
-        td {
-            padding: 9px 14px;
+        /* ASG */
 
-            border-bottom: 1px solid #edf0f4;
+        .asg {
+            margin-top: 30px;
+            padding: 25px;
+            border: 2px dashed #0891b2;
+            border-radius: 12px;
+            background: #ecfeff;
+        }
 
+        .asg h3 {
+            text-align: center;
+            color: #0e7490;
+            margin-bottom: 20px;
+        }
+
+        .asg-instances {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .instance {
+            width: 230px;
+            background: white;
+            border: 2px solid #0891b2;
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .instance h4 {
+            color: #0e7490;
+            margin-bottom: 8px;
+        }
+
+        .instance p {
             font-size: 13px;
+            line-height: 1.5;
         }
 
-        tr:last-child td {
-            border-bottom: 0;
-        }
-
-        td:first-child {
-            width: 45%;
-            color: #64748b;
-        }
-
-        td:last-child {
-            color: #1e293b;
-            font-weight: 600;
-        }
-
-        /* =========================
-           TECHNOLOGIES
-           ========================= */
-
-        .technology-list {
-            padding: 10px 16px;
-        }
+        /* Technology */
 
         .technology {
-            display: flex;
-            align-items: center;
-
-            gap: 12px;
-
-            padding: 9px 0;
-
-            border-bottom: 1px solid #edf0f4;
+            margin-top: 35px;
         }
 
-        .technology:last-child {
-            border-bottom: 0;
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
         }
 
-        .technology-icon {
-            width: 34px;
-            height: 34px;
+        .tech {
+            background: white;
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+        }
 
-            border-radius: 7px;
+        .tech strong {
+            display: block;
+            margin-bottom: 7px;
+            color: #1d4ed8;
+        }
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Status */
 
+        .status {
+            margin-top: 35px;
+            background: #111827;
             color: white;
-
-            font-size: 11px;
-            font-weight: 700;
-
-            flex-shrink: 0;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
         }
 
-        .technology strong {
-            display: block;
-            font-size: 13px;
+        .status h2 {
+            margin-bottom: 12px;
         }
 
-        .technology span {
-            display: block;
-            color: #718096;
-            font-size: 11px;
+        .status span {
+            color: #4ade80;
+            font-weight: bold;
         }
-
-        /* =========================
-           FOOTER
-           ========================= */
 
         footer {
-            background: #071426;
-
-            color: #dce5f5;
-
+            margin-top: 40px;
+            background: #111827;
+            color: #9ca3af;
             text-align: center;
-
-            padding: 24px;
-        }
-
-        footer strong {
-            color: white;
-        }
-
-        footer p {
+            padding: 20px;
             font-size: 13px;
-            margin-top: 6px;
         }
 
-        /* =========================
-           RESPONSIVE
-           ========================= */
+        @media(max-width: 700px) {
 
-        @media (max-width: 1150px) {
-
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pipeline {
-                gap: 9px;
-            }
-
-            .stage {
-                padding-left: 7px;
-                padding-right: 7px;
-            }
-
-            .stage h3 {
-                font-size: 15px;
-            }
-
-            .stage p {
-                font-size: 11px;
-            }
-        }
-
-        @media (max-width: 750px) {
-
-            header {
-                min-height: 60px;
-                height: auto;
-                padding: 14px 5%;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .hero {
-                padding: 35px 6%;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .hero p {
-                font-size: 15px;
-            }
-
-            .container {
-                width: 94%;
-                padding-top: 28px;
-            }
-
-            .pipeline {
+            .pipeline,
+            .access-flow {
                 flex-direction: column;
             }
 
-            .stage {
-                width: 100%;
+            .arrow {
+                transform: rotate(90deg);
             }
 
-            .section-title {
-                font-size: 24px;
+            .box,
+            .access-box,
+            .server {
+                width: 90%;
+                max-width: 300px;
             }
 
-            .architecture-card {
-                padding: 18px;
-            }
         }
 
     </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     HEADER
-     ===================================================== -->
-
 <header>
 
-    <div class="logo">
-        DevOps Pipeline Demo
-    </div>
+    <h1>DevOps CI/CD Pipeline</h1>
 
-    <nav>
-
-        <a href="#home">Home</a>
-
-        <a href="#pipeline">Pipeline</a>
-
-        <a href="#architecture">Architecture</a>
-
-        <a href="#info">Information</a>
-
-    </nav>
+    <p>
+        Automated Build, Test, Deployment and Application Delivery on AWS
+    </p>
 
 </header>
 
 
-<!-- =====================================================
-     HERO
-     ===================================================== -->
+<div class="container">
 
-<section class="hero" id="home">
+    <!-- CI/CD PIPELINE -->
 
-    <div class="hero-content">
-
-        <h1>
-            DevOps CI/CD Pipeline
-        </h1>
-
-        <p>
-            Automated Java application delivery using GitHub,
-            Jenkins, Maven, Ansible, Docker, Tomcat and AWS EC2.
-        </p>
-
-        <button
-            class="health-button"
-            onclick="checkHealth()">
-
-            &#10003; Check Application Health
-
-        </button>
-
-        <div id="healthMessage"></div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     MAIN
-     ===================================================== -->
-
-<main class="container">
-
-
-    <!-- =================================================
-         PIPELINE
-         ================================================= -->
-
-    <section class="section" id="pipeline">
+    <section class="architecture">
 
         <h2 class="section-title">
-            Pipeline Stages
+            CI/CD Pipeline Architecture
         </h2>
-
-        <p class="section-description">
-            Source code is committed to GitHub, Jenkins performs
-            continuous integration, Maven builds and tests the
-            application, and Ansible deploys the WAR file into
-            Dockerized Tomcat environments running on AWS EC2.
-        </p>
-
 
         <div class="pipeline">
 
-
-            <!-- 1 -->
-
-            <div class="stage">
-
-                <div class="stage-number">
-                    1
-                </div>
-
-                <h3>
-                    GitHub
-                </h3>
-
+            <div class="box">
+                <h3>GitHub</h3>
                 <p>
-                    Source Code
+                    Source Code Repository<br>
+                    Webhook Trigger
                 </p>
-
-                <div class="success">
-                    &#10003; SUCCESS
-                </div>
-
             </div>
 
+            <div class="arrow">→</div>
 
-            <!-- 2 -->
-
-            <div class="stage">
-
-                <div class="stage-number">
-                    2
-                </div>
-
-                <h3>
-                    Jenkins
-                </h3>
-
+            <div class="box">
+                <h3>Jenkins</h3>
                 <p>
+                    AWS EC2 #1<br>
                     CI Pipeline
                 </p>
-
-                <div class="success">
-                    &#10003; SUCCESS
-                </div>
-
             </div>
 
+            <div class="arrow">→</div>
 
-            <!-- 3 -->
-
-            <div class="stage">
-
-                <div class="stage-number">
-                    3
-                </div>
-
-                <h3>
-                    Maven
-                </h3>
-
+            <div class="box">
+                <h3>Maven</h3>
                 <p>
-                    Build &amp; Test
-                </p>
-
-                <div class="success">
-                    &#10003; SUCCESS
-                </div>
-
-            </div>
-
-
-            <!-- 4 -->
-
-            <div class="stage">
-
-                <div class="stage-number">
-                    4
-                </div>
-
-                <h3>
-                    Ansible
-                </h3>
-
-                <p>
-                    Deployment
-                </p>
-
-                <div class="success">
-                    &#10003; SUCCESS
-                </div>
-
-            </div>
-
-
-            <!-- 5 -->
-
-            <div class="stage">
-
-                <div class="stage-number">
-                    5
-                </div>
-
-                <h3>
-                    AWS EC2 + Docker
-                </h3>
-
-                <p>
-                    Production Containers
-                </p>
-
-                <div class="success">
-                    &#10003; RUNNING
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================================
-         ARCHITECTURE
-         ================================================= -->
-
-    <section class="section" id="architecture">
-
-
-        <!-- =================================================
-             DEPLOYMENT ARCHITECTURE
-             ================================================= -->
-
-        <div class="architecture-card">
-
-            <h2 class="architecture-title">
-                Deployment Architecture
-            </h2>
-
-            <p class="architecture-subtitle">
-                Jenkins runs on AWS EC2 #1. After the Maven build and
-                tests complete successfully, webapp.war is transferred
-                to AWS EC2 #2 where Ansible controls the deployment.
-                EC2 #2 and EC2 #3 both run Docker containers containing
-                Tomcat and the web application.
-            </p>
-
-
-            <div class="deployment-flow">
-
-
-                <!-- GITHUB -->
-
-                <div class="arch-node github-node">
-
-                    <div class="arch-icon github-icon">
-                        GH
-                    </div>
-
-                    <h3>
-                        GitHub
-                    </h3>
-
-                    <p>
-                        Source Code
-                    </p>
-
-                </div>
-
-
-                <!-- WEBHOOK -->
-
-                <div class="arrow">
-
-                    Webhook
-
-                    <div class="arrow-symbol">
-                        &rarr;
-                    </div>
-
-                </div>
-
-
-                <!-- EC2 #1 -->
-
-                <div class="arch-node jenkins-node">
-
-                    <div class="arch-icon jenkins-icon">
-                        J
-                    </div>
-
-                    <h3>
-                        AWS EC2 #1
-                    </h3>
-
-                    <p>
-                        Jenkins Server
-                    </p>
-
-                    <p>
-                        Maven Build &amp; Test
-                    </p>
-
-                </div>
-
-
-                <!-- WAR -->
-
-                <div class="arrow">
-
+                    Build<br>
+                    Unit Tests<br>
                     webapp.war
+                </p>
+            </div>
 
-                    <div class="arrow-symbol">
-                        &rarr;
-                    </div>
+            <div class="arrow">→</div>
 
-                </div>
-
-
-                <!-- EC2 #2 CONTROLLER -->
-
-                <div class="arch-node ansible-node">
-
-                    <div class="arch-icon ansible-icon">
-                        A
-                    </div>
-
-                    <h3>
-                        AWS EC2 #2
-                    </h3>
-
-                    <p>
-                        Ansible Controller
-                    </p>
-
-                    <p>
-                        Docker Host
-                    </p>
-
-                </div>
-
-
-                <!-- DEPLOY -->
-
-                <div class="arrow">
-
-                    Ansible
-
-                    <div class="arrow-symbol">
-                        &rarr;
-                    </div>
-
-                </div>
-
-
-                <!-- TARGETS -->
-
-                <div class="deployment-targets">
-
-
-                    <!-- EC2 #2 -->
-
-                    <div class="target-box">
-
-                        <div class="arch-icon docker-icon">
-                            D
-                        </div>
-
-                        <div>
-
-                            <div class="target-title">
-                                AWS EC2 #2
-                            </div>
-
-                            <div class="target-subtitle">
-                                Ansible Controller + Docker
-                            </div>
-
-                            <div class="container-box">
-
-                                <span>
-                                    Docker Container
-                                </span>
-
-                                <br>
-
-                                <strong>
-                                    Tomcat
-                                </strong>
-
-                                <br>
-
-                                <span>
-                                    webapp.war
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- EC2 #3 -->
-
-                    <div class="target-box">
-
-                        <div class="arch-icon docker-icon">
-                            D
-                        </div>
-
-                        <div>
-
-                            <div class="target-title">
-                                AWS EC2 #3
-                            </div>
-
-                            <div class="target-subtitle">
-                                Docker Host
-                            </div>
-
-                            <div class="container-box">
-
-                                <span>
-                                    Docker Container
-                                </span>
-
-                                <br>
-
-                                <strong>
-                                    Tomcat
-                                </strong>
-
-                                <br>
-
-                                <span>
-                                    webapp.war
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
+            <div class="box">
+                <h3>Ansible</h3>
+                <p>
+                    AWS EC2 Controller<br>
+                    Dynamic AWS Inventory
+                </p>
             </div>
 
         </div>
 
 
-        <!-- =================================================
-             APPLICATION ACCESS ARCHITECTURE
-             ================================================= -->
+        <!-- DEPLOYMENT -->
 
-        <div class="architecture-card">
+        <div class="deployment">
 
-            <h2 class="architecture-title">
-                Application Access Architecture
+            <h2 class="section-title">
+                Automated Deployment
             </h2>
 
-            <p class="architecture-subtitle">
-                Deployment and application access are separate.
-                Once the application is deployed, users access it
-                through the AWS Application Load Balancer. The ALB
-                forwards requests to the Dockerized Tomcat
-                applications running on EC2 #2 and EC2 #3.
-            </p>
+            <div class="controller">
+
+                <h3>Ansible Controller</h3>
+
+                <p>
+                    AWS EC2 Instance<br>
+                    IAM Role: AnsibleControllerRole<br>
+                    amazon.aws Collection<br>
+                    Dynamic EC2 Inventory
+                </p>
+
+            </div>
+
+            <div class="down-arrow">
+                ↓
+            </div>
 
 
-            <div class="access-flow">
+            <div class="servers">
 
+                <div class="server">
 
-                <!-- USER -->
-
-                <div class="arch-node user-node">
-
-                    <div class="arch-icon user-icon">
-                        USER
-                    </div>
-
-                    <h3>
-                        User / Browser
-                    </h3>
+                    <h3>ASG Instance 1</h3>
 
                     <p>
-                        Application Request
+                        Amazon EC2<br>
+                        Docker<br>
+                        Tomcat<br>
+                        Port 8080<br>
+                        Managed by ASG
                     </p>
 
                 </div>
 
 
-                <!-- HTTP -->
+                <div class="server">
 
-                <div class="arrow">
-
-                    HTTP
-
-                    <div class="arrow-symbol">
-                        &rarr;
-                    </div>
-
-                </div>
-
-
-                <!-- ALB -->
-
-                <div class="arch-node alb-node">
-
-                    <div class="arch-icon alb-icon">
-                        ALB
-                    </div>
-
-                    <h3>
-                        AWS ALB
-                    </h3>
+                    <h3>ASG Instance 2</h3>
 
                     <p>
-                        Application Load Balancer
+                        Amazon EC2<br>
+                        Docker<br>
+                        Tomcat<br>
+                        Port 8080<br>
+                        Managed by ASG
                     </p>
 
                 </div>
 
-
-                <!-- TARGET GROUP -->
-
-                <div class="arrow">
-
-                    Target Group
-
-                    <div class="arrow-symbol">
-                        &rarr;
-                    </div>
-
-                </div>
-
-
-                <!-- TARGETS -->
-
-                <div class="access-targets">
-
-
-                    <!-- EC2 #2 -->
-
-                    <div class="access-server">
-
-                        <div>
-
-                            <strong>
-                                AWS EC2 #2
-                            </strong>
-
-                            <span>
-                                Docker Container
-                            </span>
-
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Tomcat
-                            </strong>
-
-                            <span>
-                                webapp.war
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- EC2 #3 -->
-
-                    <div class="access-server">
-
-                        <div>
-
-                            <strong>
-                                AWS EC2 #3
-                            </strong>
-
-                            <span>
-                                Docker Container
-                            </span>
-
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Tomcat
-                            </strong>
-
-                            <span>
-                                webapp.war
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
             </div>
 
         </div>
-
-
-        <!-- =================================================
-             INFORMATION CARDS
-             ================================================= -->
-
-        <div class="info-grid" id="info">
-
-
-            <!-- DEPLOYMENT -->
-
-            <div class="info-card">
-
-                <h3>
-                    Deployment Information
-                </h3>
-
-                <table>
-
-                    <tr>
-                        <td>Source Control</td>
-                        <td>GitHub</td>
-                    </tr>
-
-                    <tr>
-                        <td>CI Server</td>
-                        <td>Jenkins</td>
-                    </tr>
-
-                    <tr>
-                        <td>Build Tool</td>
-                        <td>Maven</td>
-                    </tr>
-
-                    <tr>
-                        <td>Artifact</td>
-                        <td>webapp.war</td>
-                    </tr>
-
-                    <tr>
-                        <td>Deployment Tool</td>
-                        <td>Ansible</td>
-                    </tr>
-
-                    <tr>
-                        <td>Container Platform</td>
-                        <td>Docker</td>
-                    </tr>
-
-                    <tr>
-                        <td>Application Server</td>
-                        <td>Tomcat</td>
-                    </tr>
-
-                    <tr>
-                        <td>Cloud Platform</td>
-                        <td>AWS EC2</td>
-                    </tr>
-
-                    <tr>
-                        <td>Deployment Status</td>
-
-                        <td class="success">
-                            &#10003; SUCCESSFUL
-                        </td>
-                    </tr>
-
-                </table>
-
-            </div>
-
-
-            <!-- EC2 SERVERS -->
-
-            <div class="info-card">
-
-                <h3>
-                    AWS EC2 Infrastructure
-                </h3>
-
-                <table>
-
-                    <tr>
-                        <td>EC2 #1</td>
-                        <td>Jenkins + Maven</td>
-                    </tr>
-
-                    <tr>
-                        <td>EC2 #2</td>
-                        <td>Ansible + Docker + Tomcat</td>
-                    </tr>
-
-                    <tr>
-                        <td>EC2 #3</td>
-                        <td>Docker + Tomcat</td>
-                    </tr>
-
-                    <tr>
-                        <td>Application</td>
-                        <td>webapp.war</td>
-                    </tr>
-
-                    <tr>
-                        <td>Container</td>
-                        <td>Docker</td>
-                    </tr>
-
-                    <tr>
-                        <td>Application Server</td>
-                        <td>Tomcat</td>
-                    </tr>
-
-                    <tr>
-                        <td>Deployment Controller</td>
-                        <td>EC2 #2</td>
-                    </tr>
-
-                    <tr>
-                        <td>Load Balancer</td>
-                        <td>AWS ALB</td>
-                    </tr>
-
-                    <tr>
-                        <td>Environment</td>
-                        <td>Production</td>
-                    </tr>
-
-                </table>
-
-            </div>
-
-
-            <!-- TECHNOLOGIES -->
-
-            <div class="info-card">
-
-                <h3>
-                    Technologies Used
-                </h3>
-
-
-                <div class="technology-list">
-
-
-                    <div class="technology">
-
-                        <div class="technology-icon github-icon">
-                            GH
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                GitHub
-                            </strong>
-
-                            <span>
-                                Source Code Management
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="technology">
-
-                        <div class="technology-icon jenkins-icon">
-                            J
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Jenkins
-                            </strong>
-
-                            <span>
-                                Continuous Integration
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="technology">
-
-                        <div class="technology-icon"
-                             style="background:#1976d2;">
-                            M
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Maven
-                            </strong>
-
-                            <span>
-                                Build &amp; Testing
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="technology">
-
-                        <div class="technology-icon"
-                             style="background:#111111;">
-                            A
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Ansible
-                            </strong>
-
-                            <span>
-                                Deployment Automation
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="technology">
-
-                        <div class="technology-icon docker-icon">
-                            D
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Docker
-                            </strong>
-
-                            <span>
-                                Containerization
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="technology">
-
-                        <div class="technology-icon"
-                             style="background:#232f3e;color:#ffb300;">
-                            AWS
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                AWS EC2 + ALB
-                            </strong>
-
-                            <span>
-                                Cloud Infrastructure
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-        </div>
-
 
     </section>
 
 
-</main>
+    <!-- APPLICATION ACCESS -->
+
+    <section class="access">
+
+        <h2 class="section-title">
+            Application Access Architecture
+        </h2>
 
 
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
+        <div class="access-flow">
+
+            <div class="access-box">
+
+                <h3>Client</h3>
+
+                <p>
+                    User / Browser
+                </p>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="access-box">
+
+                <h3>AWS ALB</h3>
+
+                <p>
+                    webapp-alb<br>
+                    HTTP : 80
+                </p>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="access-box">
+
+                <h3>Target Group</h3>
+
+                <p>
+                    webapp-tg<br>
+                    HTTP : 8080<br>
+                    Health Checks
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ASG -->
+
+        <div class="asg">
+
+            <h3>
+                Auto Scaling Group: devops-ec2-3-asg
+            </h3>
+
+
+            <div class="asg-instances">
+
+                <div class="instance">
+
+                    <h4>EC2 Instance 1</h4>
+
+                    <p>
+                        Docker Container<br>
+                        customcontainer<br>
+                        Tomcat : 8080<br>
+                        Healthy
+                    </p>
+
+                </div>
+
+
+                <div class="instance">
+
+                    <h4>EC2 Instance 2</h4>
+
+                    <p>
+                        Docker Container<br>
+                        customcontainer<br>
+                        Tomcat : 8080<br>
+                        Healthy
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TECHNOLOGIES -->
+
+    <section class="technology">
+
+        <h2 class="section-title">
+            Technologies Used
+        </h2>
+
+        <div class="tech-grid">
+
+            <div class="tech">
+                <strong>GitHub</strong>
+                Source Control
+            </div>
+
+            <div class="tech">
+                <strong>Jenkins</strong>
+                CI/CD
+            </div>
+
+            <div class="tech">
+                <strong>Maven</strong>
+                Build & Test
+            </div>
+
+            <div class="tech">
+                <strong>Ansible</strong>
+                Deployment
+            </div>
+
+            <div class="tech">
+                <strong>AWS EC2</strong>
+                Compute
+            </div>
+
+            <div class="tech">
+                <strong>Docker</strong>
+                Containerization
+            </div>
+
+            <div class="tech">
+                <strong>Tomcat</strong>
+                Application Server
+            </div>
+
+            <div class="tech">
+                <strong>ALB</strong>
+                Load Balancing
+            </div>
+
+            <div class="tech">
+                <strong>Auto Scaling</strong>
+                High Availability
+            </div>
+
+            <div class="tech">
+                <strong>IAM</strong>
+                AWS Access Control
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATUS -->
+
+    <section class="status">
+
+        <h2>Deployment Status</h2>
+
+        <p>
+            Application is deployed through the automated CI/CD pipeline
+            and served through the AWS Application Load Balancer.
+        </p>
+
+        <br>
+
+        <p>
+            <span>● HEALTHY</span>
+            &nbsp; | &nbsp;
+            Docker &nbsp; | &nbsp;
+            Tomcat &nbsp; | &nbsp;
+            ALB &nbsp; | &nbsp;
+            Auto Scaling
+        </p>
+
+    </section>
+
+</div>
+
 
 <footer>
 
-    <strong>
-        DevOps CI/CD Pipeline
-    </strong>
-
-    <p>
-        GitHub | Jenkins | Maven | Ansible | Docker | Tomcat | AWS EC2 | ALB
-    </p>
-
-    <p>
-        Automated Java Application Deployment
-    </p>
+    DevOps CI/CD Demo Application |
+    GitHub → Jenkins → Maven → Ansible → AWS ASG → ALB → Tomcat
 
 </footer>
 
-
-<!-- =====================================================
-     JAVASCRIPT
-     ===================================================== -->
-
-<script>
-
-    function checkHealth() {
-
-        const message =
-            document.getElementById("healthMessage");
-
-        message.innerHTML =
-            "&#10003; Application is healthy and responding successfully.";
-
-    }
-
-</script>
-
-
 </body>
-
 </html>
