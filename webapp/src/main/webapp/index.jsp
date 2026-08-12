@@ -41,7 +41,7 @@
 
         .container {
             width: 92%;
-            max-width: 1250px;
+            max-width: 1350px;
             margin: 30px auto;
         }
 
@@ -52,7 +52,9 @@
             color: #111827;
         }
 
-        /* Architecture */
+        /* =========================
+           CI/CD ARCHITECTURE
+           ========================= */
 
         .architecture {
             background: white;
@@ -99,7 +101,18 @@
             color: #64748b;
         }
 
-        /* Deployment */
+        .artifact {
+            border-color: #d97706;
+            background: #fffbeb;
+        }
+
+        .artifact h3 {
+            color: #b45309;
+        }
+
+        /* =========================
+           DEPLOYMENT
+           ========================= */
 
         .deployment {
             margin-top: 35px;
@@ -108,13 +121,14 @@
         }
 
         .controller {
-            width: 260px;
+            width: 300px;
             margin: auto;
             border: 2px solid #7c3aed;
             background: #f5f3ff;
             border-radius: 10px;
-            padding: 20px;
+            padding: 22px;
             text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
 
         .controller h3 {
@@ -124,30 +138,40 @@
 
         .controller p {
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .down-arrow {
             text-align: center;
             font-size: 35px;
             color: #64748b;
-            margin: 12px;
+            margin: 10px;
         }
 
-        .servers {
+        .deployment-method {
+            text-align: center;
+            font-weight: bold;
+            color: #6d28d9;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .deployment-targets {
             display: flex;
+            align-items: flex-start;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
         .server {
-            width: 280px;
+            width: 290px;
             padding: 25px;
             border-radius: 10px;
             text-align: center;
             border: 2px solid #059669;
             background: #ecfdf5;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
 
         .server h3 {
@@ -160,7 +184,63 @@
             line-height: 1.7;
         }
 
-        /* Application Access */
+        /* =========================
+           ASG DEPLOYMENT GROUP
+           ========================= */
+
+        .deployment-asg {
+            width: 620px;
+            max-width: 100%;
+            padding: 22px;
+            border: 2px dashed #0891b2;
+            border-radius: 12px;
+            background: #ecfeff;
+        }
+
+        .deployment-asg-title {
+            text-align: center;
+            color: #0e7490;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .deployment-asg-subtitle {
+            text-align: center;
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 18px;
+        }
+
+        .asg-deployment-instances {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .asg-deployment-instance {
+            width: 250px;
+            background: white;
+            border: 2px solid #0891b2;
+            border-radius: 9px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .asg-deployment-instance h4 {
+            color: #0e7490;
+            margin-bottom: 10px;
+        }
+
+        .asg-deployment-instance p {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           APPLICATION ACCESS
+           ========================= */
 
         .access {
             margin-top: 35px;
@@ -198,49 +278,131 @@
             line-height: 1.5;
         }
 
-        /* ASG */
+        .access-arrow {
+            font-size: 30px;
+            font-weight: bold;
+            color: #64748b;
+        }
 
-        .asg {
+        /* =========================
+           TARGET GROUP
+           ========================= */
+
+        .target-group {
             margin-top: 30px;
             padding: 25px;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            background: #fffbeb;
+        }
+
+        .target-group h3 {
+            text-align: center;
+            color: #b45309;
+            margin-bottom: 8px;
+        }
+
+        .target-group-description {
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        /* =========================
+           APPLICATION TARGETS
+           ========================= */
+
+        .application-targets {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .access-instance {
+            width: 285px;
+            background: white;
+            border: 2px solid #059669;
+            border-radius: 10px;
+            padding: 22px;
+            text-align: center;
+        }
+
+        .access-instance h4 {
+            color: #047857;
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .access-instance p {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           ACCESS ASG
+           ========================= */
+
+        .access-asg {
+            width: 620px;
+            max-width: 100%;
+            padding: 22px;
             border: 2px dashed #0891b2;
             border-radius: 12px;
             background: #ecfeff;
         }
 
-        .asg h3 {
+        .access-asg h4 {
             text-align: center;
             color: #0e7490;
-            margin-bottom: 20px;
+            margin-bottom: 7px;
+            font-size: 18px;
         }
 
-        .asg-instances {
+        .access-asg-description {
+            text-align: center;
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 18px;
+        }
+
+        .access-asg-instances {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 18px;
             flex-wrap: wrap;
         }
 
-        .instance {
-            width: 230px;
+        .access-asg-instance {
+            width: 250px;
             background: white;
             border: 2px solid #0891b2;
-            border-radius: 8px;
+            border-radius: 9px;
             padding: 18px;
             text-align: center;
         }
 
-        .instance h4 {
+        .access-asg-instance h5 {
             color: #0e7490;
             margin-bottom: 8px;
+            font-size: 15px;
         }
 
-        .instance p {
+        .access-asg-instance p {
             font-size: 13px;
             line-height: 1.5;
         }
 
-        /* Technology */
+        .healthy {
+            color: #059669;
+            font-weight: bold;
+        }
+
+        /* =========================
+           TECHNOLOGIES
+           ========================= */
 
         .technology {
             margin-top: 35px;
@@ -266,7 +428,9 @@
             color: #1d4ed8;
         }
 
-        /* Status */
+        /* =========================
+           STATUS
+           ========================= */
 
         .status {
             margin-top: 35px;
@@ -286,6 +450,10 @@
             font-weight: bold;
         }
 
+        /* =========================
+           FOOTER
+           ========================= */
+
         footer {
             margin-top: 40px;
             background: #111827;
@@ -293,26 +461,44 @@
             text-align: center;
             padding: 20px;
             font-size: 13px;
+            line-height: 1.8;
         }
 
-        @media(max-width: 700px) {
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media(max-width: 900px) {
 
             .pipeline,
             .access-flow {
                 flex-direction: column;
             }
 
-            .arrow {
+            .arrow,
+            .access-arrow {
                 transform: rotate(90deg);
             }
 
             .box,
-            .access-box,
-            .server {
+            .access-box {
                 width: 90%;
                 max-width: 300px;
             }
 
+            .deployment-targets,
+            .application-targets {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .server,
+            .deployment-asg,
+            .access-instance,
+            .access-asg {
+                width: 90%;
+                max-width: 620px;
+            }
         }
 
     </style>
@@ -334,14 +520,15 @@
 <div class="container">
 
 
-    <!-- CI/CD PIPELINE -->
+    <!-- =====================================================
+         CI/CD PIPELINE ARCHITECTURE
+         ===================================================== -->
 
     <section class="architecture">
 
         <h2 class="section-title">
             CI/CD Pipeline Architecture
         </h2>
-
 
         <div class="pipeline">
 
@@ -382,7 +569,22 @@
                 <p>
                     Build<br>
                     Unit Tests<br>
-                    webapp.war
+                    Package Application
+                </p>
+
+            </div>
+
+
+            <div class="arrow">→</div>
+
+
+            <div class="box artifact">
+
+                <h3>Build Artifact</h3>
+
+                <p>
+                    webapp.war<br>
+                    Generated by Maven
                 </p>
 
             </div>
@@ -405,14 +607,18 @@
         </div>
 
 
-        <!-- DEPLOYMENT -->
+        <!-- =====================================================
+             AUTOMATED DEPLOYMENT
+             ===================================================== -->
 
         <div class="deployment">
 
             <h2 class="section-title">
-                Automated Deployment
+                Automated Deployment Architecture
             </h2>
 
+
+            <!-- ANSIBLE CONTROLLER -->
 
             <div class="controller">
 
@@ -434,21 +640,22 @@
             </div>
 
 
-            <div style="text-align:center;
-                        font-weight:bold;
-                        color:#6d28d9;
-                        margin-bottom:20px;
-                        font-size:15px;">
+            <div class="deployment-method">
 
-                SSH + Ansible
+                SSH + Ansible<br>
+                <span style="font-size:13px;font-weight:normal;color:#64748b;">
+                    Deploys webapp.war to all application targets
+                </span>
 
             </div>
 
 
-            <div class="servers">
+            <!-- DEPLOYMENT TARGETS -->
+
+            <div class="deployment-targets">
 
 
-                <!-- EC2 #3 -->
+                <!-- FIXED EC2 #3 -->
 
                 <div class="server">
 
@@ -456,45 +663,72 @@
 
                     <p>
                         Private IP: 172.31.45.146<br>
-                        Docker<br>
-                        Tomcat<br>
-                        Port 8080<br>
+                        Docker Host<br>
+                        Docker Container<br>
+                        Tomcat : 8080<br>
+                        webapp.war<br>
                         Application Server
                     </p>
 
                 </div>
 
 
-                <!-- ASG #1 -->
+                <!-- ASG -->
 
-                <div class="server">
+                <div class="deployment-asg">
 
-                    <h3>ASG Instance #1</h3>
+                    <div class="deployment-asg-title">
 
-                    <p>
-                        Private IP: 172.31.32.227<br>
-                        Docker<br>
-                        Tomcat<br>
-                        Port 8080<br>
-                        Managed by ASG
-                    </p>
+                        Auto Scaling Group
 
-                </div>
+                    </div>
+
+                    <div class="deployment-asg-subtitle">
+
+                        Two EC2 application instances managed by ASG
+
+                    </div>
 
 
-                <!-- ASG #2 -->
+                    <div class="asg-deployment-instances">
 
-                <div class="server">
 
-                    <h3>ASG Instance #2</h3>
+                        <!-- ASG INSTANCE #1 -->
 
-                    <p>
-                        Private IP: 172.31.37.170<br>
-                        Docker<br>
-                        Tomcat<br>
-                        Port 8080<br>
-                        Managed by ASG
-                    </p>
+                        <div class="asg-deployment-instance">
+
+                            <h4>ASG Instance #1</h4>
+
+                            <p>
+                                Private IP: 172.31.32.227<br>
+                                Docker Host<br>
+                                Docker Container<br>
+                                Tomcat : 8080<br>
+                                webapp.war<br>
+                                Managed by ASG
+                            </p>
+
+                        </div>
+
+
+                        <!-- ASG INSTANCE #2 -->
+
+                        <div class="asg-deployment-instance">
+
+                            <h4>ASG Instance #2</h4>
+
+                            <p>
+                                Private IP: 172.31.37.170<br>
+                                Docker Host<br>
+                                Docker Container<br>
+                                Tomcat : 8080<br>
+                                webapp.war<br>
+                                Managed by ASG
+                            </p>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -505,7 +739,10 @@
     </section>
 
 
-    <!-- APPLICATION ACCESS -->
+
+    <!-- =====================================================
+         APPLICATION ACCESS ARCHITECTURE
+         ===================================================== -->
 
     <section class="access">
 
@@ -513,6 +750,8 @@
             Application Access Architecture
         </h2>
 
+
+        <!-- USER → ALB → TARGET GROUP -->
 
         <div class="access-flow">
 
@@ -522,13 +761,14 @@
                 <h3>Client</h3>
 
                 <p>
-                    User / Browser
+                    User / Browser<br>
+                    Application Request
                 </p>
 
             </div>
 
 
-            <div class="arrow">
+            <div class="access-arrow">
                 →
             </div>
 
@@ -538,6 +778,7 @@
                 <h3>AWS ALB</h3>
 
                 <p>
+                    Application Load Balancer<br>
                     webapp-alb<br>
                     HTTP : 80
                 </p>
@@ -545,7 +786,7 @@
             </div>
 
 
-            <div class="arrow">
+            <div class="access-arrow">
                 →
             </div>
 
@@ -557,7 +798,8 @@
                 <p>
                     webapp-tg<br>
                     HTTP : 8080<br>
-                    Health Checks
+                    Health Checks<br>
+                    Load Balancing
                 </p>
 
             </div>
@@ -565,70 +807,104 @@
         </div>
 
 
-        <!-- APPLICATION TARGETS -->
+        <!-- TARGET GROUP -->
 
-        <div class="asg">
+        <div class="target-group">
 
             <h3>
                 Application Targets
             </h3>
 
+            <div class="target-group-description">
 
-            <div class="asg-instances">
+                Target Group distributes application traffic across
+                EC2 #3 and the Auto Scaling Group instances.
+
+            </div>
+
+
+            <div class="application-targets">
 
 
                 <!-- EC2 #3 -->
 
-                <div class="instance">
+                <div class="access-instance">
 
                     <h4>EC2 #3 — Fixed</h4>
 
                     <p>
-                        172.31.45.146<br>
+                        Private IP: 172.31.45.146<br>
                         Docker Container<br>
                         customcontainer<br>
                         Tomcat : 8080<br>
-                        Healthy
+                        <span class="healthy">● Healthy</span>
                     </p>
 
                 </div>
 
 
-                <!-- ASG #1 -->
+                <!-- ASG -->
 
-                <div class="instance">
+                <div class="access-asg">
 
-                    <h4>ASG Instance #1</h4>
+                    <h4>
+                        Auto Scaling Group
+                    </h4>
 
-                    <p>
-                        172.31.32.227<br>
-                        Docker Container<br>
-                        customcontainer<br>
-                        Tomcat : 8080<br>
-                        Managed by ASG<br>
-                        Healthy
-                    </p>
+                    <div class="access-asg-description">
+
+                        Application instances managed by ASG
+
+                    </div>
+
+
+                    <div class="access-asg-instances">
+
+
+                        <!-- ASG #1 -->
+
+                        <div class="access-asg-instance">
+
+                            <h5>
+                                ASG Instance #1
+                            </h5>
+
+                            <p>
+                                172.31.32.227<br>
+                                Docker Container<br>
+                                customcontainer<br>
+                                Tomcat : 8080<br>
+                                <span class="healthy">
+                                    ● Healthy
+                                </span>
+                            </p>
+
+                        </div>
+
+
+                        <!-- ASG #2 -->
+
+                        <div class="access-asg-instance">
+
+                            <h5>
+                                ASG Instance #2
+                            </h5>
+
+                            <p>
+                                172.31.37.170<br>
+                                Docker Container<br>
+                                customcontainer<br>
+                                Tomcat : 8080<br>
+                                <span class="healthy">
+                                    ● Healthy
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </div>
 
                 </div>
-
-
-                <!-- ASG #2 -->
-
-                <div class="instance">
-
-                    <h4>ASG Instance #2</h4>
-
-                    <p>
-                        172.31.37.170<br>
-                        Docker Container<br>
-                        customcontainer<br>
-                        Tomcat : 8080<br>
-                        Managed by ASG<br>
-                        Healthy
-                    </p>
-
-                </div>
-
 
             </div>
 
@@ -637,7 +913,10 @@
     </section>
 
 
-    <!-- TECHNOLOGIES -->
+
+    <!-- =====================================================
+         TECHNOLOGIES
+         ===================================================== -->
 
     <section class="technology">
 
@@ -669,7 +948,7 @@
 
             <div class="tech">
                 <strong>Ansible</strong>
-                Deployment
+                Deployment Automation
             </div>
 
 
@@ -698,6 +977,12 @@
 
 
             <div class="tech">
+                <strong>Target Group</strong>
+                Traffic Distribution
+            </div>
+
+
+            <div class="tech">
                 <strong>Auto Scaling</strong>
                 High Availability
             </div>
@@ -714,11 +999,16 @@
     </section>
 
 
-    <!-- STATUS -->
+
+    <!-- =====================================================
+         STATUS
+         ===================================================== -->
 
     <section class="status">
 
-        <h2>Deployment Status</h2>
+        <h2>
+            Deployment Status
+        </h2>
 
         <p>
             Application is deployed through the automated CI/CD pipeline
@@ -728,12 +1018,41 @@
         <br>
 
         <p>
+
             <span>● HEALTHY</span>
+
             &nbsp; | &nbsp;
-            Docker &nbsp; | &nbsp;
-            Tomcat &nbsp; | &nbsp;
-            ALB &nbsp; | &nbsp;
+
+            GitHub
+
+            &nbsp; | &nbsp;
+
+            Jenkins
+
+            &nbsp; | &nbsp;
+
+            Maven
+
+            &nbsp; | &nbsp;
+
+            Ansible
+
+            &nbsp; | &nbsp;
+
+            Docker
+
+            &nbsp; | &nbsp;
+
+            Tomcat
+
+            &nbsp; | &nbsp;
+
+            ALB
+
+            &nbsp; | &nbsp;
+
             Auto Scaling
+
         </p>
 
     </section>
@@ -742,14 +1061,26 @@
 </div>
 
 
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
 <footer>
 
-    DevOps CI/CD Demo Application |
-    Deployment:
-    GitHub → Jenkins → Maven → Ansible → EC2 #3 + ASG
-    &nbsp; | &nbsp;
-    Access:
-    ALB → Target Group → EC2 #3 + ASG
+    <strong>DevOps CI/CD Demo Application</strong>
+    <br>
+
+    Deployment Flow:
+    GitHub → Jenkins/EC2 #1 → Maven → webapp.war →
+    EC2 #2 Ansible Controller →
+    EC2 #3 + ASG Instances
+
+    <br>
+
+    Application Access:
+    User → ALB → Target Group →
+    EC2 #3 + ASG Instances
 
 </footer>
 
