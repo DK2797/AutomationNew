@@ -108,7 +108,7 @@
         }
 
         .controller {
-            width: 260px;
+            width: 300px;
             margin: auto;
             border: 2px solid #7c3aed;
             background: #f5f3ff;
@@ -132,6 +132,14 @@
             font-size: 35px;
             color: #64748b;
             margin: 12px;
+        }
+
+        .deployment-method {
+            text-align: center;
+            font-weight: bold;
+            color: #6d28d9;
+            margin-bottom: 20px;
+            font-size: 15px;
         }
 
         .servers {
@@ -158,6 +166,26 @@
         .server p {
             font-size: 14px;
             line-height: 1.7;
+        }
+
+        .deployment-flow {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .deployment-flow strong {
+            color: #374151;
+        }
+
+        .deployment-flow p {
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #4b5563;
         }
 
         /* Application Access */
@@ -198,7 +226,7 @@
             line-height: 1.5;
         }
 
-        /* ASG */
+        /* Application Targets */
 
         .asg {
             margin-top: 30px;
@@ -333,6 +361,7 @@
 
 <div class="container">
 
+
     <!-- CI/CD PIPELINE -->
 
     <section class="architecture">
@@ -341,45 +370,64 @@
             CI/CD Pipeline Architecture
         </h2>
 
+
         <div class="pipeline">
 
             <div class="box">
+
                 <h3>GitHub</h3>
+
                 <p>
                     Source Code Repository<br>
                     Webhook Trigger
                 </p>
+
             </div>
+
 
             <div class="arrow">→</div>
 
+
             <div class="box">
+
                 <h3>Jenkins</h3>
+
                 <p>
                     AWS EC2 #1<br>
                     CI Pipeline
                 </p>
+
             </div>
+
 
             <div class="arrow">→</div>
 
+
             <div class="box">
+
                 <h3>Maven</h3>
+
                 <p>
                     Build<br>
                     Unit Tests<br>
                     webapp.war
                 </p>
+
             </div>
+
 
             <div class="arrow">→</div>
 
+
             <div class="box">
+
                 <h3>Ansible</h3>
+
                 <p>
-                    AWS EC2 Controller<br>
-                    Dynamic AWS Inventory
+                    AWS EC2 #2<br>
+                    Ansible Controller
                 </p>
+
             </div>
 
         </div>
@@ -393,12 +441,14 @@
                 Automated Deployment
             </h2>
 
+
             <div class="controller">
 
-                <h3>Ansible Controller</h3>
+                <h3>EC2 #2 — Ansible Controller</h3>
 
                 <p>
-                    AWS EC2 Instance<br>
+                    Private IP: 172.31.3.172<br>
+                    Ansible Controller<br>
                     IAM Role: AnsibleControllerRole<br>
                     amazon.aws Collection<br>
                     Dynamic EC2 Inventory
@@ -406,19 +456,45 @@
 
             </div>
 
+
             <div class="down-arrow">
                 ↓
             </div>
 
 
+            <div class="deployment-method">
+                SSH + Ansible
+            </div>
+
+
             <div class="servers">
 
+
+                <!-- EC2 #3 -->
+
                 <div class="server">
 
-                    <h3>ASG Instance 1</h3>
+                    <h3>EC2 #3 — Fixed</h3>
 
                     <p>
-                        Amazon EC2<br>
+                        Private IP: 172.31.45.146<br>
+                        Docker<br>
+                        Tomcat<br>
+                        Port 8080<br>
+                        Application Server
+                    </p>
+
+                </div>
+
+
+                <!-- ASG #1 -->
+
+                <div class="server">
+
+                    <h3>ASG Instance #1</h3>
+
+                    <p>
+                        Private IP: 172.31.32.227<br>
                         Docker<br>
                         Tomcat<br>
                         Port 8080<br>
@@ -428,12 +504,14 @@
                 </div>
 
 
+                <!-- ASG #2 -->
+
                 <div class="server">
 
-                    <h3>ASG Instance 2</h3>
+                    <h3>ASG Instance #2</h3>
 
                     <p>
-                        Amazon EC2<br>
+                        Private IP: 172.31.37.170<br>
                         Docker<br>
                         Tomcat<br>
                         Port 8080<br>
@@ -441,6 +519,22 @@
                     </p>
 
                 </div>
+
+            </div>
+
+
+            <div class="deployment-flow">
+
+                <strong>
+                    Deployment Flow
+                </strong>
+
+                <p>
+                    GitHub → EC2 #1 Jenkins + Maven → webapp.war
+                    → EC2 #2 Ansible Controller
+                    → SSH + Ansible
+                    → EC2 #3 + ASG #1 + ASG #2
+                </p>
 
             </div>
 
@@ -459,6 +553,7 @@
 
 
         <div class="access-flow">
+
 
             <div class="access-box">
 
@@ -482,7 +577,8 @@
 
                 <p>
                     webapp-alb<br>
-                    HTTP : 80
+                    HTTP : 80<br>
+                    Application Load Balancer
                 </p>
 
             </div>
@@ -508,24 +604,27 @@
         </div>
 
 
-        <!-- ASG -->
+        <!-- APPLICATION TARGETS -->
 
         <div class="asg">
 
             <h3>
-                Auto Scaling Group: devops-ec2-3-asg
+                Application Targets
             </h3>
 
 
             <div class="asg-instances">
 
+
+                <!-- EC2 #3 -->
+
                 <div class="instance">
 
-                    <h4>EC2 Instance 1</h4>
+                    <h4>EC2 #3 — Fixed</h4>
 
                     <p>
+                        172.31.45.146<br>
                         Docker Container<br>
-                        customcontainer<br>
                         Tomcat : 8080<br>
                         Healthy
                     </p>
@@ -533,18 +632,39 @@
                 </div>
 
 
+                <!-- ASG #1 -->
+
                 <div class="instance">
 
-                    <h4>EC2 Instance 2</h4>
+                    <h4>ASG Instance #1</h4>
 
                     <p>
+                        172.31.32.227<br>
                         Docker Container<br>
-                        customcontainer<br>
                         Tomcat : 8080<br>
+                        Managed by ASG<br>
                         Healthy
                     </p>
 
                 </div>
+
+
+                <!-- ASG #2 -->
+
+                <div class="instance">
+
+                    <h4>ASG Instance #2</h4>
+
+                    <p>
+                        172.31.37.170<br>
+                        Docker Container<br>
+                        Tomcat : 8080<br>
+                        Managed by ASG<br>
+                        Healthy
+                    </p>
+
+                </div>
+
 
             </div>
 
@@ -561,57 +681,99 @@
             Technologies Used
         </h2>
 
+
         <div class="tech-grid">
 
+
             <div class="tech">
+
                 <strong>GitHub</strong>
+
                 Source Control
+
             </div>
 
+
             <div class="tech">
+
                 <strong>Jenkins</strong>
+
                 CI/CD
+
             </div>
 
+
             <div class="tech">
+
                 <strong>Maven</strong>
+
                 Build & Test
+
             </div>
 
+
             <div class="tech">
+
                 <strong>Ansible</strong>
+
                 Deployment
+
             </div>
 
+
             <div class="tech">
+
                 <strong>AWS EC2</strong>
+
                 Compute
+
             </div>
 
+
             <div class="tech">
+
                 <strong>Docker</strong>
+
                 Containerization
+
             </div>
 
+
             <div class="tech">
+
                 <strong>Tomcat</strong>
+
                 Application Server
+
             </div>
 
+
             <div class="tech">
+
                 <strong>ALB</strong>
+
                 Load Balancing
+
             </div>
 
+
             <div class="tech">
+
                 <strong>Auto Scaling</strong>
+
                 High Availability
+
             </div>
 
+
             <div class="tech">
+
                 <strong>IAM</strong>
+
                 AWS Access Control
+
             </div>
+
 
         </div>
 
@@ -632,15 +794,23 @@
         <br>
 
         <p>
+
             <span>● HEALTHY</span>
+
             &nbsp; | &nbsp;
+
             Docker &nbsp; | &nbsp;
+
             Tomcat &nbsp; | &nbsp;
+
             ALB &nbsp; | &nbsp;
+
             Auto Scaling
+
         </p>
 
     </section>
+
 
 </div>
 
@@ -648,9 +818,17 @@
 <footer>
 
     DevOps CI/CD Demo Application |
-    GitHub → Jenkins → Maven → Ansible → AWS ASG → ALB → Tomcat
+
+    Deployment:
+    GitHub → Jenkins → Maven → Ansible → EC2 #3 + ASG
+
+    &nbsp; | &nbsp;
+
+    Access:
+    ALB → Target Group → EC2 #3 + ASG
 
 </footer>
+
 
 </body>
 </html>
