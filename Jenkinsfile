@@ -3,21 +3,15 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                sh '/opt/apache-maven-3.9.16/bin/mvn clean package'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh '/opt/apache-maven-3.9.16/bin/mvn test'
             }
         }
     }
